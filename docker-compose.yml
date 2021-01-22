@@ -1,0 +1,20 @@
+version: '3'
+services:
+  survey-service:
+    container_name: survey-service
+    image: rodrigotrentinrossi/survey-service
+    restart: always
+    build: .
+    ports:
+      - '4003:4003'
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - mongodata:/data/db
+    ports:
+      - '27017:27017'
+volumes:
+  mongodata:
