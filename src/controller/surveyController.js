@@ -51,9 +51,10 @@ async function insert(req, res) {
     titleIcon,
   });
 
-  // Fazer uma chamada para o serviço de Question pedindo o documento subject para cada um dos subjects
+  // Faz uma chamada para o serviço de Question pedindo o documento subject para cada um dos subjects
+  //TODO Colocar o endereço do outro serviço como sendo pelo NGINX
   const subjectsNotFound = [];
-  const subjectsValidated = [];
+  const subjectsValidated = []; 
   for (const subject of subjects) {
     await axios
       .get(`http://localhost:4001/subject/${subject._id}`)
